@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "781912235707",
+    "project_id": "smashfest-a1dcd",
+    "storage_bucket": "smashfest-a1dcd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781912235707:android:4641547474ee8e92ddd39e",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.SmashFest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781912235707-am55i2rl11d210burga554juohhjo67n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuuAYyX3EGRO8G_pTc3B6e-pxxniLulOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781912235707-am55i2rl11d210burga554juohhjo67n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
