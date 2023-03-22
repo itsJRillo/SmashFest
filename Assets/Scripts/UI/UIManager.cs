@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject loginUI;
     public GameObject registerUI;
     public GameObject menuUI;
+    public GameObject startMenuUI;
 
     private void Awake()
     {
