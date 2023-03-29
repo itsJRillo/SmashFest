@@ -28,15 +28,26 @@ public class UIManager : MonoBehaviour
     public void LoginScreen(){
         loginUI.SetActive(true);
         registerUI.SetActive(false);
+        menuUI.SetActive(false);
+        startMenuUI.SetActive(false);
     }
 
     public void RegisterScreen(){
         loginUI.SetActive(false);
         registerUI.SetActive(true);
+        menuUI.SetActive(false);
+        startMenuUI.SetActive(false);
     }
 
-    public void menuScreen(){
+    public void MenuScreen(){
         loginUI.SetActive(false);
         registerUI.SetActive(false);
+        menuUI.SetActive(true);
+        startMenuUI.SetActive(false);
+    }
+
+    public void StartMenuScreen(){
+        menuUI.SetActive(false);
+        startMenuUI.SetActive(true);
     }
 }

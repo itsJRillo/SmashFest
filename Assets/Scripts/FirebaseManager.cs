@@ -72,11 +72,9 @@ public class FirebaseManager : MonoBehaviour
     
     //Function for the register button
     public void RegisterButton() {
-        Debug.LogWarning(message: "Pasa por aquí Register");
-        StartCoroutine(UpdateUsernameDatabase("Ismael"));
-        StartCoroutine(UpdateEmailDatabase("juanismael06@gmail.com"));
+        StartCoroutine(UpdateUsernameDatabase(usernameRegisterField.text));
+        StartCoroutine(UpdateEmailDatabase(emailRegisterField.text));
         StartCoroutine(UpdateWinsDatabase(0));
-        Debug.LogWarning(message: "Y por aquí Register");
 
         StartCoroutine(Register(emailRegisterField.text, passwordRegisterField.text, usernameRegisterField.text));
     }
@@ -119,7 +117,7 @@ public class FirebaseManager : MonoBehaviour
             Debug.LogFormat("Usuario ha iniciado sesión: {0} ({1})", User.DisplayName, User.Email);
             warningLoginText.text = "";
             confirmLoginText.text = "Logeado";
-
+            UIManager.instance.MenuScreen();
         }
     }
 
@@ -192,8 +190,7 @@ public class FirebaseManager : MonoBehaviour
                     {
                         //Username is now set
                         //Now return to login screen
-                        UIManager.instance.LoginScreen();
-                        warningRegisterText.text = "";
+                        UIManager.instance.MenuScreen();
                     }
                 }
             }
