@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 134634223e5458b438de0fd50f8b90ac
+guid: 47318391f451e834fb31b014c58f8eb8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Layer_0001_8_0
+      name: Decors_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 17
         y: 0
-        width: 928
-        height: 70
+        width: 73
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +143,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 180fa2ab69a797c4dbc86e26bbd91aa1
-      internalID: -1237831231
+      spriteID: 17106f339d1c4b54e8943fea055a874f
+      internalID: 1388730882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Decors_1
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 0
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f79a46014ec654684843d506b43db9
+      internalID: 1040036254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Decors_2
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 0
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ff98ea325536994f826f16a45aebf7f
+      internalID: -1847174461
       vertices: []
       indices: 
       edges: []
@@ -160,7 +202,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Layer_0001_8_0: -1237831231
+      Decors_0: 1388730882
+      Decors_1: 1040036254
+      Decors_2: -1847174461
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
