@@ -12,14 +12,11 @@ Ranking: Añadir un ranking de puntos con una base de datos MySQL/MongoDB y que 
 ## Tecnologías Utilizadas
 - Unity: motor de juego utilizado para desarrollar el proyecto.
 - Photon Engine: librería externa de Unity utilizada para crear el modo multijugador.
-- PHP: lenguaje utilizado para la conexión con la base de datos MySQL.
+- Firebase
 
 ## Cómo probar el proyecto
   Descarga el repositorio.
   Abre el proyecto en Unity.
   Ejecuta el juego en el editor o construye la aplicación para tu plataforma.
   Disfruta del juego y no dudes en dejarme comentarios y sugerencias.
-  
-## Contribuciones
-Si deseas contribuir a este proyecto, eres bienvenido. Simplemente haz un fork del repositorio y envía tus pull requests.
 
