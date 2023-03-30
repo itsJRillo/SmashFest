@@ -72,6 +72,7 @@ public class FirebaseManager : MonoBehaviour
     
     //Function for the register button
     public void RegisterButton() {
+        StartCoroutine(UpdateUsernameAuth(usernameRegisterField.text));
         StartCoroutine(UpdateUsernameDatabase(usernameRegisterField.text));
         StartCoroutine(UpdateEmailDatabase(emailRegisterField.text));
         StartCoroutine(UpdateWinsDatabase(0));
