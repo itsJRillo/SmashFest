@@ -11,9 +11,9 @@ public class UIManager : MonoBehaviour
     public GameObject registerUI;
     public GameObject menuUI;
     public GameObject startMenuUI;
+    public GameObject leaderboardUI;
 
-    private void Awake()
-    {
+    private void Awake() {
         if (instance == null)
         {
             instance = this;
@@ -25,29 +25,43 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void LoginScreen(){
+    public void LoginScreen() {
         loginUI.SetActive(true);
         registerUI.SetActive(false);
         menuUI.SetActive(false);
         startMenuUI.SetActive(false);
+        leaderboardUI.SetActive(false);
     }
 
-    public void RegisterScreen(){
+    public void RegisterScreen() {
         loginUI.SetActive(false);
         registerUI.SetActive(true);
         menuUI.SetActive(false);
         startMenuUI.SetActive(false);
+        leaderboardUI.SetActive(false);
     }
 
-    public void MenuScreen(){
+    public void MenuScreen() {
         loginUI.SetActive(false);
         registerUI.SetActive(false);
         menuUI.SetActive(true);
         startMenuUI.SetActive(false);
+        leaderboardUI.SetActive(false);
     }
 
-    public void StartMenuScreen(){
+    public void StartMenuScreen() {
+        loginUI.SetActive(false);
+        registerUI.SetActive(false);
         menuUI.SetActive(false);
         startMenuUI.SetActive(true);
+        leaderboardUI.SetActive(false);
+    }
+
+    public void LeaderboardScreen() {
+        loginUI.SetActive(false);
+        registerUI.SetActive(false);
+        menuUI.SetActive(false);
+        startMenuUI.SetActive(false);
+        leaderboardUI.SetActive(true);
     }
 }
