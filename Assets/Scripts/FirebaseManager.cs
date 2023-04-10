@@ -72,8 +72,8 @@ public class FirebaseManager : MonoBehaviour {
         StartCoroutine(Register(correuRegisterInput.text, contrasenaRegisterInput.text, nomRegisterInput.text));
     }
 
-    private IEnumerator Login(string _email, string _password) {
-        var LoginTask = auth.SignInWithEmailAndPasswordAsync(_email, _password);
+    private IEnumerator Login(string correu, string contrasena) {
+        var LoginTask = auth.SignInWithEmailAndPasswordAsync(correu, contrasena);
     
         yield return new WaitUntil(predicate: () => LoginTask.IsCompleted);
 
