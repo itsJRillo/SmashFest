@@ -28,8 +28,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E)){
             animator.SetBool("isAttacking", true);
+
         } else if(Input.GetKeyUp(KeyCode.E)){
             animator.SetBool("isAttacking", false);
+        }
+
+        if(Input.GetKey(KeyCode.R)){
+            animator.SetBool("Charging", true);
+        } else if(Input.GetKeyUp(KeyCode.R)){
+            animator.SetBool("Charging", false);
         }
 
         Flip();

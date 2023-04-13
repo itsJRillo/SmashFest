@@ -162,6 +162,11 @@ public class FirebaseManager : MonoBehaviour {
                         warningRegisterText.text = "El proceso ha fallado";
 
                     } else {
+                        StartCoroutine(UpdateUsernameAuth(nomRegisterInput.text));
+                        StartCoroutine(UpdateUsernameDatabase(nomRegisterInput.text));
+                        StartCoroutine(UpdateEmailDatabase(correuRegisterInput.text));
+                        StartCoroutine(UpdateWinsDatabase(0));
+                        
                         UIManager.instance.LoginScreen();
                     }
                 }
@@ -170,11 +175,7 @@ public class FirebaseManager : MonoBehaviour {
     }
 
     public void UploadToRD() {
-        StartCoroutine(UpdateUsernameAuth(nomRegisterInput.text));
-
-        StartCoroutine(UpdateUsernameDatabase(nomRegisterInput.text));
-        StartCoroutine(UpdateEmailDatabase(correuRegisterInput.text));
-        StartCoroutine(UpdateWinsDatabase(0));
+        
     }
 
     public void SignOutButton() {
