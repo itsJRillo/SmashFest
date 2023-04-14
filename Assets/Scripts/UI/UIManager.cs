@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject menuUI;
     public GameObject startMenuUI;
     public GameObject leaderboardUI;
+    public GameObject configurationUI;
 
     private void Awake() {
         if (instance == null)
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
         menuUI.SetActive(false);
         startMenuUI.SetActive(false);
         leaderboardUI.SetActive(false);
+        configurationUI.SetActive(false);
     }
 
     public void RegisterScreen() {
@@ -39,6 +41,7 @@ public class UIManager : MonoBehaviour
         menuUI.SetActive(false);
         startMenuUI.SetActive(false);
         leaderboardUI.SetActive(false);
+        configurationUI.SetActive(false);
     }
 
     public void MenuScreen() {
@@ -47,6 +50,7 @@ public class UIManager : MonoBehaviour
         menuUI.SetActive(true);
         startMenuUI.SetActive(false);
         leaderboardUI.SetActive(false);
+        configurationUI.SetActive(false);
     }
 
     public void StartMenuScreen() {
@@ -55,6 +59,7 @@ public class UIManager : MonoBehaviour
         menuUI.SetActive(false);
         startMenuUI.SetActive(true);
         leaderboardUI.SetActive(false);
+        configurationUI.SetActive(false);
     }
 
     public void LeaderboardScreen() {
@@ -63,5 +68,15 @@ public class UIManager : MonoBehaviour
         menuUI.SetActive(false);
         startMenuUI.SetActive(false);
         leaderboardUI.SetActive(true);
+        configurationUI.SetActive(false);
+    }
+
+    public void ConfigurationScreen() {
+        loginUI.SetActive(false);
+        registerUI.SetActive(false);
+        menuUI.SetActive(false);
+        startMenuUI.SetActive(false);
+        leaderboardUI.SetActive(false);
+        configurationUI.SetActive(true);
     }
 }
