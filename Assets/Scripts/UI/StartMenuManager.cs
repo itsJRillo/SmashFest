@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartMenuManager : MonoBehaviour {
 
     public void ChangeScene() {
-        SceneManager.LoadScene("ForestScene");
+        SceneManager.LoadScene("CharacterSelection");
     }
 
 }

@@ -173,11 +173,7 @@ public class FirebaseManager : MonoBehaviour {
             }
         }
     }
-
-    public void UploadToRD() {
-        
-    }
-
+    
     public void SignOutButton() {
         auth.SignOut();
         UIManager.instance.LoginScreen();
@@ -214,7 +210,7 @@ public class FirebaseManager : MonoBehaviour {
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
     }
 
-    private IEnumerator LoadLeaderboardData() {
+    public IEnumerator LoadLeaderboardData() {
         var DBTask = db.Child("usuaris").OrderByChild("victorias").GetValueAsync();
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
@@ -233,7 +229,7 @@ public class FirebaseManager : MonoBehaviour {
                 int victorias = int.Parse(childSnapshot.Child("victorias").Value.ToString());
 
                 GameObject leaderboardElement = Instantiate(leaderboard, leaderboardContent);
-                leaderboardElement.GetComponent<Leaderboard>().SetLeaderboardUser(nom, victorias);
+                leaderboardElement.GetComponent<Leaderboard>().SetLeaderboardUser(nom, victorias);                
             }
 
             UIManager.instance.LeaderboardScreen();
