@@ -229,7 +229,7 @@ public class FirebaseManager : MonoBehaviour {
                 int victorias = int.Parse(childSnapshot.Child("victorias").Value.ToString());
 
                 GameObject leaderboardElement = Instantiate(leaderboard, leaderboardContent);
-                leaderboardElement.GetComponent<Leaderboard>().SetLeaderboardUser(nom, victorias);                
+                leaderboardElement.GetComponent<Leaderboard>().SetLeaderboardUser(nom.ToLower(), victorias);                
             }
 
             UIManager.instance.LeaderboardScreen();
