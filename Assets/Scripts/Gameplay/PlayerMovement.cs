@@ -12,6 +12,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    [SerializeField] private Transform controllerHit;
+    [SerializeField] private Vector2 sizeHit;
+    [SerializeField] private float damageHit;
+
+    private void hit(){
+        Collider2D[] obj = Physics2D.OverlapBoxAll(controllerHit.position, sizeHit, 0f);
+
+        foreach (Collider2D item in obj) {
+            if(item.CompareTag("Enemy")){
+                Debug.Log("Player hit");
+                item.transform.GetComponent<EnemyStatus>().enemyHealth -= damageHit;
+            }
+        }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(controllerHit.position, sizeHit);    
+    }
+
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -28,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E)){
             animator.SetBool("isAttacking", true);
-
+            hit();
         } else if(Input.GetKeyUp(KeyCode.E)){
             animator.SetBool("isAttacking", false);
         }
@@ -37,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Charging", true);
         } else if(Input.GetKeyUp(KeyCode.R)){
             animator.SetBool("Charging", false);
+            hit();
         }
 
         Flip();
