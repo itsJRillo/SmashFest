@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  jumpingPower: 16
+  jumpingPower: 25
   animator: {fileID: 3722640229819112783}
   rb: {fileID: 3722640229819112818}
   groundCheck: {fileID: 3722640228558486743}
@@ -190,7 +190,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   controllerHit: {fileID: 8264459485680047093}
-  sizeHit: {x: 15, y: 5}
+  sizeHit: {x: 9, y: 5}
   damageHit: 10
 --- !u!114 &3722640229819112782
 MonoBehaviour:

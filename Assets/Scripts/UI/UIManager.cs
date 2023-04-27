@@ -7,8 +7,6 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     //Screen object variables
-    public GameObject loginUI;
-    public GameObject registerUI;
     public GameObject menuUI;
     public GameObject startMenuUI;
     public GameObject leaderboardUI;
@@ -26,27 +24,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void LoginScreen() {
-        loginUI.SetActive(true);
-        registerUI.SetActive(false);
-        menuUI.SetActive(false);
-        startMenuUI.SetActive(false);
-        leaderboardUI.SetActive(false);
-        configurationUI.SetActive(false);
-    }
-
-    public void RegisterScreen() {
-        loginUI.SetActive(false);
-        registerUI.SetActive(true);
-        menuUI.SetActive(false);
-        startMenuUI.SetActive(false);
-        leaderboardUI.SetActive(false);
-        configurationUI.SetActive(false);
-    }
-
     public void MenuScreen() {
-        loginUI.SetActive(false);
-        registerUI.SetActive(false);
         menuUI.SetActive(true);
         startMenuUI.SetActive(false);
         leaderboardUI.SetActive(false);
@@ -54,8 +32,6 @@ public class UIManager : MonoBehaviour
     }
 
     public void StartMenuScreen() {
-        loginUI.SetActive(false);
-        registerUI.SetActive(false);
         menuUI.SetActive(false);
         startMenuUI.SetActive(true);
         leaderboardUI.SetActive(false);
@@ -63,8 +39,6 @@ public class UIManager : MonoBehaviour
     }
 
     public void LeaderboardScreen() {
-        loginUI.SetActive(false);
-        registerUI.SetActive(false);
         menuUI.SetActive(false);
         startMenuUI.SetActive(false);
         leaderboardUI.SetActive(true);
@@ -72,8 +46,6 @@ public class UIManager : MonoBehaviour
     }
 
     public void ConfigurationScreen() {
-        loginUI.SetActive(false);
-        registerUI.SetActive(false);
         menuUI.SetActive(false);
         startMenuUI.SetActive(false);
         leaderboardUI.SetActive(false);

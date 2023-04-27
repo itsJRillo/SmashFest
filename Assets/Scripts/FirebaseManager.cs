@@ -5,6 +5,7 @@ using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FirebaseManager : MonoBehaviour {
 
@@ -108,7 +109,7 @@ public class FirebaseManager : MonoBehaviour {
 
             yield return new WaitForSeconds(2);
 
-            UIManager.instance.MenuScreen();
+            SceneManager.LoadScene("MainScene");
             confirmLoginText.text = "";
         }
     }
@@ -167,7 +168,7 @@ public class FirebaseManager : MonoBehaviour {
                         StartCoroutine(UpdateEmailDatabase(correuRegisterInput.text));
                         StartCoroutine(UpdateWinsDatabase(0));
                         
-                        UIManager.instance.LoginScreen();
+                        IngressManager.instance.LoginScreen();
                     }
                 }
             }
@@ -176,7 +177,7 @@ public class FirebaseManager : MonoBehaviour {
     
     public void SignOutButton() {
         auth.SignOut();
-        UIManager.instance.LoginScreen();
+        IngressManager.instance.LoginScreen();
         ClearLoginFields();
         ClearRegisterFields();
     }

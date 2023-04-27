@@ -21,14 +21,4 @@ public class PlayerStatus : MonoBehaviour {
         healthBar.fillAmount = Mathf.Clamp(playerHealth / maxHealth, 0, 1);
     }
 
-    public IEnumerator Dead() {
-        Debug.Log ("dead");
-        GetComponent<Renderer>().enabled = false;
-
-        yield return new WaitForSeconds(5);
-
-        Debug.Log ("respawn");
-        GetComponent<Renderer>().enabled = true;
-    }
-    
 }
