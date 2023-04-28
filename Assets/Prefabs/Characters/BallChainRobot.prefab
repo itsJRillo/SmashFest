@@ -192,6 +192,7 @@ MonoBehaviour:
   controllerHit: {fileID: 8264459485680047093}
   sizeHit: {x: 9, y: 5}
   damageHit: 10
+  attackCooldown: 1
 --- !u!114 &3722640229819112782
 MonoBehaviour:
   m_ObjectHideFlags: 0

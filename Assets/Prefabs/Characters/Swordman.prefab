@@ -176,6 +176,7 @@ MonoBehaviour:
   controllerHit: {fileID: 2856772037514328373}
   sizeHit: {x: 8, y: 5}
   damageHit: 10
+  attackCooldown: 1
 --- !u!114 &2856772038362860339
 MonoBehaviour:
   m_ObjectHideFlags: 0

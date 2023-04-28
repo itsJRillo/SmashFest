@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private Transform controllerHit;
     [SerializeField] private Vector2 sizeHit;
     [SerializeField] private float damageHit;
+    [SerializeField] private float attackCooldown;
 
     private void hit() {
         Collider2D[] obj = Physics2D.OverlapBoxAll(controllerHit.position, sizeHit, 0f);
@@ -67,8 +68,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.E)) {
-            animator.SetBool("isAttacking", true);
-            hit();
+            StartCoroutine(attack());
         } else if(Input.GetKeyUp(KeyCode.E)){
             animator.SetBool("isAttacking", false);
         }
@@ -81,6 +81,13 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         Flip();
+    }
+    
+    public IEnumerator attack(){
+        animator.SetBool("isAttacking", true);
+        hit();
+
+        yield return new WaitForSeconds(attackCooldown);
     }
 
     private void FixedUpdate() {

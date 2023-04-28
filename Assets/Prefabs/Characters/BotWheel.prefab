@@ -113,7 +113,8 @@ MonoBehaviour:
     m_Bits: 64
   controllerHit: {fileID: 4363319647393540664}
   sizeHit: {x: 6, y: 5}
-  damageHit: 0
+  damageHit: 20
+  attackCooldown: 1
 --- !u!114 &5875048752424599806
 MonoBehaviour:
   m_ObjectHideFlags: 0

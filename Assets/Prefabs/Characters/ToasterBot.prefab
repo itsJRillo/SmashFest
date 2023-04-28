@@ -160,7 +160,8 @@ MonoBehaviour:
     m_Bits: 64
   controllerHit: {fileID: 2345285292009382373}
   sizeHit: {x: 25, y: 5}
-  damageHit: 0
+  damageHit: 20
+  attackCooldown: 1
 --- !u!61 &6039054026799544051
 BoxCollider2D:
   m_ObjectHideFlags: 0
