@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3722640228558486743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CollisionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3722640229819112781}
   - component: {fileID: 3722640229819112782}
   - component: {fileID: 3722640229819112783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BallChainRobot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  jumpingPower: 25
+  jumpingPower: 50
   animator: {fileID: 3722640229819112783}
   rb: {fileID: 3722640229819112818}
   groundCheck: {fileID: 3722640228558486743}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8264459485680047093}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

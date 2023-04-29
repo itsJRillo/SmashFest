@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 
         foreach (Collider2D item in obj) {
             if(item.CompareTag("Enemy")){
-                StartCoroutine(hit(item.transform.GetComponent<EnemyStatus>().animator));
+                item.transform.GetComponent<EnemyStatus>().animator.SetTrigger ("hitted");
                 item.transform.GetComponent<EnemyStatus>().enemyHealth -= damageHit;
 
                 if(item.transform.GetComponent<EnemyStatus>().enemyHealth <= 0) {
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private IEnumerator hit(Animator animator) {
-        animator.SetTrigger ("hitted");
+        
         yield return new WaitForSeconds (2);
     }
 
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour {
         animator.SetBool("isAttacking", true);
         hit();
 
-        yield return new WaitForSeconds(attackCooldown);
+        yield return new WaitForSeconds(2);
     }
 
     private void FixedUpdate() {

@@ -5,38 +5,46 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour {
-    public static bool GameIsPaused = false;
     public GameObject gameOverMenuUI;
 
     void Update() {
-        if(CountdownTimer.gameOver){
+        if(CountdownTimer.gameOver || CountdownTimer.timeRemaining <= 0.0f){
             Pause();
+        } else {
+            if(PauseMenu.GameIsPaused == true){
+                Time.timeScale = 0f;
+            } else {
+                Resume();
+            }
         }
     }
 
     public void Resume() {
-        gameOverMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        gameOverMenuUI.SetActive(false);
     }
 
     public void Pause() {
-        gameOverMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        gameOverMenuUI.SetActive(true);
     }
 
     public void LoadCharacterSelection() {
         Debug.Log("Loading character selection...");
         CountdownTimer.gameOver = false;
-        gameOverMenuUI.SetActive(false);
+        CountdownTimer.timeRemaining = 120f;
+        
         Time.timeScale = 1f;
+        gameOverMenuUI.SetActive(false);
+
         SceneManager.LoadScene("CharacterSelection");
     }
 
     public void PlayAgain() {
-        Debug.Log("Restarting game...");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         CountdownTimer.gameOver = false;
+        CountdownTimer.timeRemaining = 180f;
+        
         gameOverMenuUI.SetActive(false);
         Time.timeScale = 1f;
     }

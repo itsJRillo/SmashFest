@@ -7,16 +7,12 @@ using TMPro;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public float timeRemaining = 5.0f;
+    public static float timeRemaining = 180.0f;
     public static bool gameOver = false;
     public TMP_Text timerText;
 
     void Update() {
         if (timeRemaining <= 0.0f) {
-            timerText.text = "Time's up";
-            Time.timeScale = 0f;
-
-        } else if(gameOver == true) {
             timerText.text = "Game Over";
             Time.timeScale = 0f;
             

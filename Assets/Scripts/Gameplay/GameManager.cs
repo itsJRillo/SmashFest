@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Pathfinding;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,5 +22,8 @@ public class GameManager : MonoBehaviour
 
         EnemyStatus enemyStatus = GameObject.FindWithTag("Enemy").GetComponent<EnemyStatus>();
         enemyStatus.healthBar = canvas.transform.Find("HealthBar_Enemy").GetComponent<Image>();
+
+        AIDestinationSetter setterAI = GameObject.FindWithTag("Pathfinder").GetComponent<AIDestinationSetter>();
+        setterAI.target = clone.transform;
     }
 }

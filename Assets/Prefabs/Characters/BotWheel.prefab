@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5875048752424599807}
   - component: {fileID: 5875048752424599802}
   - component: {fileID: 5875048752424599801}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BotWheel
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  jumpingPower: 16
+  jumpingPower: 30
   animator: {fileID: 5875048752424599802}
   rb: {fileID: 5875048752424599807}
   groundCheck: {fileID: 5875048753225057848}
@@ -208,7 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5875048753225057848}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CollisionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4363319647393540664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

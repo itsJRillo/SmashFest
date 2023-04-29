@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using System.Linq;
 
 public class EnemyStatus : MonoBehaviour {
@@ -27,25 +26,12 @@ public class EnemyStatus : MonoBehaviour {
         if(other.gameObject.CompareTag("Player")){
 
             player.playerHealth -= damage;
-            StartCoroutine(hitted(player.animator));
+            player.animator.SetTrigger("hitted");
 
             if (player.playerHealth < 0) {
-                StartCoroutine(death(player.animator));
-                
+                player.animator.SetTrigger ("isDead");
+                CountdownTimer.gameOver = true;          
             }
         }
-    }
-
-    private IEnumerator hitted(Animator animator) {
-        animator.SetTrigger ("hitted");
-        yield return new WaitForSeconds (2);
-    }
-
-    private IEnumerator death(Animator animator) {
-        animator.SetTrigger ("isDead");
-        yield return new WaitForSeconds (2);
-        
-        CountdownTimer.gameOver = true;
-        Time.timeScale = 0f;
     }
 }
