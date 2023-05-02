@@ -29,25 +29,20 @@ public class PlayerMovement : MonoBehaviour {
 
                 if(item.transform.GetComponent<EnemyStatus>().enemyHealth <= 0) {
                     StartCoroutine(death(item.transform));
-                    
                 }
             }
         }
     }
 
-    private IEnumerator hit(Animator animator) {
-        
-        yield return new WaitForSeconds (2);
-    }
-
     private IEnumerator death(Transform enemy) {
-        enemy.GetComponent<EnemyStatus>().animator.SetBool("isDead", true);
+        enemy.GetComponent<EnemyMovement>().aiPath.canMove = false;
+        enemy.GetComponent<EnemyStatus>().animator.SetTrigger("isDead");
+        
         yield return new WaitForSeconds (3);
         enemy.GetComponent<BoxCollider2D>().size = new Vector3(0.3f,0,0);
         enemy.GetComponent<BoxCollider2D>().offset = new Vector2(-0.05f, -0.16f);
         CountdownTimer.gameOver = true;
         Time.timeScale = 0f;
-
     }
 
     private void OnDrawGizmos() {
