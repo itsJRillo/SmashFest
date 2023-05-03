@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelection.unity
     guid: f8d16bb14f82a634aa9f458ff2f42d54
   - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 14d70b7f8d2bdc44db8b481dc499330a
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 714cb0c335e983d4581d27f259778d0f
+  - enabled: 1
     path: Assets/Scenes/ForestScene.unity
     guid: dfa4b4308a819e14791934e450dc57f2
   m_configObjects: {}

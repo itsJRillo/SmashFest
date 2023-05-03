@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117180f34d3e00546b6d45778cf128d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  playerHealth: 400
   maxHealth: 0
   healthBar: {fileID: 0}
   animator: {fileID: 5875048752424599802}
@@ -142,8 +142,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 8.84
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 9.81

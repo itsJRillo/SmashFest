@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour {
         enemy.GetComponent<EnemyStatus>().animator.SetTrigger("isDead");
         
         yield return new WaitForSeconds (3);
+        
         enemy.GetComponent<BoxCollider2D>().size = new Vector3(0.3f,0,0);
         enemy.GetComponent<BoxCollider2D>().offset = new Vector2(-0.05f, -0.16f);
         CountdownTimer.gameOver = true;
@@ -69,7 +70,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if(Input.GetKey(KeyCode.R)) {
-            animator.SetBool("Charging", true);
+            StartCoroutine(charge());
         } else if(Input.GetKeyUp(KeyCode.R)){
             animator.SetBool("Charging", false);
             hit();
@@ -81,6 +82,20 @@ public class PlayerMovement : MonoBehaviour {
     public IEnumerator attack(){
         animator.SetBool("isAttacking", true);
         hit();
+
+        yield return new WaitForSeconds(2);
+    }
+
+    public IEnumerator charge(){
+        animator.SetBool("Charging", true);
+        Animation anim = gameObject.GetComponent<Animation>();
+        AnimationState animState = anim[anim.clip.name];
+
+        if (anim.isPlaying) {
+            if (animState.normalizedTime > 0) {
+                hit();
+            }
+        }
 
         yield return new WaitForSeconds(2);
     }

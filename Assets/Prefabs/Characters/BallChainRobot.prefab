@@ -133,8 +133,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 10.938423
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 9.81
@@ -191,7 +191,7 @@ MonoBehaviour:
     m_Bits: 64
   controllerHit: {fileID: 8264459485680047093}
   sizeHit: {x: 9, y: 5}
-  damageHit: 10
+  damageHit: 100
   attackCooldown: 1
 --- !u!114 &3722640229819112782
 MonoBehaviour:
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117180f34d3e00546b6d45778cf128d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  playerHealth: 200
   maxHealth: 0
   healthBar: {fileID: 0}
   animator: {fileID: 3722640229819112783}

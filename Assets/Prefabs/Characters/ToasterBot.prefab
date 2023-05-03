@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  jumpingPower: 16
+  jumpingPower: 30
   animator: {fileID: 6039054026799544049}
   rb: {fileID: 6039054026799544050}
   groundCheck: {fileID: 6039054027268289396}
@@ -160,8 +160,8 @@ MonoBehaviour:
     m_Bits: 64
   controllerHit: {fileID: 2345285292009382373}
   sizeHit: {x: 25, y: 5}
-  damageHit: 20
-  attackCooldown: 1
+  damageHit: 50
+  attackCooldown: 3
 --- !u!61 &6039054026799544051
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  m_UseAutoMass: 1
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05

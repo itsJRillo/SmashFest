@@ -7,10 +7,7 @@ using System.Linq;
 public class EnemyMovement : MonoBehaviour
 {
     private float horizontal;
-    public float speed = 8f;
-    public float jumpingPower = 16f;
-    public AIPath aiPath;
-    public Animator animator;
+    private bool isAttacking = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -20,6 +17,68 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Vector2 sizeHit;
     [SerializeField] private float damageHit;
 
+    public float speed = 8f;
+    public float jumpingPower = 16f;
+    public AIPath aiPath;
+    public Animator animator;
+
+    private void hit() {
+        if(!isAttacking) return;
+
+        Collider2D[] obj = Physics2D.OverlapBoxAll(controllerHit.position, sizeHit, 0f);
+
+        foreach (Collider2D item in obj) {
+            if(item.CompareTag("Player")){
+                item.transform.GetComponent<PlayerStatus>().animator.SetTrigger("hitted");
+                
+                animator.SetTrigger("isAttacking");
+                StartCoroutine(ApplyDamage(item.transform));
+            }
+        }
+    }
+
+    IEnumerator ApplyDamage(Transform playerTransform) {
+        PlayerStatus player = playerTransform.GetComponent<PlayerStatus>();
+        player.playerHealth -= damageHit;
+        yield return null;
+        if(player.playerHealth <= 0) {
+            StartCoroutine(death(playerTransform));
+        }
+    }
+
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(controllerHit.position, sizeHit);    
+    }
+
+    void Update() {
+        GameObject player = GameObject.FindWithTag("Player");
+
+        float distance = Mathf.Abs(transform.position.x - player.transform.position.x);
+
+        if(distance < 10f){
+            if(!isAttacking){
+                StartCoroutine(attack());
+            }
+        } else {
+            animator.SetFloat("Speed", Mathf.Abs(aiPath.desiredVelocity.magnitude));
+        }
+
+        if(aiPath.desiredVelocity.x >= 0.01f){
+            transform.localScale = new Vector2(1f,1f);
+
+        } else if (aiPath.desiredVelocity.x <= -0.01f){
+            transform.localScale = new Vector2(-1f,1f);
+        }  
+    }
+
+    IEnumerator attack() {
+        isAttacking = true;
+        hit();
+        yield return new WaitForSeconds(1);
+        isAttacking = false;
+    }
 
     IEnumerator death(Transform player) {
         player.GetComponent<PlayerStatus>().animator.SetTrigger("isDead");
@@ -28,48 +87,6 @@ public class EnemyMovement : MonoBehaviour
 
         CountdownTimer.gameOver = true;
         Time.timeScale = 0f;
-    }
-
-    IEnumerator hit(Transform player) {
-        player.transform.GetComponent<PlayerStatus>().animator.SetTrigger("hitted");
-        player.transform.GetComponent<PlayerStatus>().playerHealth -= damageHit;
-
-        yield return new WaitForSeconds (2);
-    }
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(controllerHit.position, sizeHit);    
-    }
-
-
-    void Update() {
-        
-        animator.SetFloat("Speed", Mathf.Abs(aiPath.desiredVelocity.magnitude));
-
-        if(aiPath.desiredVelocity.x >= 0.01f){
-            transform.localScale = new Vector3(1f,1f,1f);
-
-        } else if (aiPath.desiredVelocity.x <= -0.01f){
-            transform.localScale = new Vector3(-1f,1f,1f);
-        }
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        PlayerStatus playerStatus;
-
-        if (player.TryGetComponent(out playerStatus)) {
-            if (Vector2.Distance(transform.position, player.transform.position) < 2f) {
-                Debug.Log("In range");
-                animator.SetTrigger("isAttacking");
-                hit(player.transform);
-
-                if (playerStatus.playerHealth <= 0) {
-                    StartCoroutine(death(player.transform));
-                }
-            }
-        }
-
-        
     }
 
     private void FixedUpdate() {

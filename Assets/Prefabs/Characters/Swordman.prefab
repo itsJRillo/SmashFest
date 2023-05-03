@@ -93,7 +93,7 @@ Transform:
   m_GameObject: {fileID: 2856772038362860343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 1}
+  m_LocalScale: {x: 25, y: 25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2856772037514328373}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  jumpingPower: 16
+  jumpingPower: 20
   animator: {fileID: 2856772038362860338}
   rb: {fileID: 2856772038362860337}
   groundCheck: {fileID: 2856772038341147350}
@@ -175,8 +175,8 @@ MonoBehaviour:
     m_Bits: 64
   controllerHit: {fileID: 2856772037514328373}
   sizeHit: {x: 8, y: 5}
-  damageHit: 10
-  attackCooldown: 1
+  damageHit: 15
+  attackCooldown: 1.5
 --- !u!114 &2856772038362860339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117180f34d3e00546b6d45778cf128d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  playerHealth: 200
   maxHealth: 0
   healthBar: {fileID: 0}
   animator: {fileID: 2856772038362860338}
@@ -225,8 +225,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 26.802065
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 9.81

@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class StartMenuManager : MonoBehaviour {
 
-    public void ChangeScene() {
+    public void Play() {
         SceneManager.LoadScene("CharacterSelection");
+    }
+
+    public void Multiplayer() {
+        SceneManager.LoadScene("LoadingScene");
     }
 
 }

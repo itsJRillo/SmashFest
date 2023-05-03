@@ -74,8 +74,6 @@ public class FirebaseManager : MonoBehaviour {
     }
 
     private IEnumerator Login(string correu, string contrasena) {
-        ClearLoginFields();
-
         var LoginTask = auth.SignInWithEmailAndPasswordAsync(correu, contrasena);
     
         yield return new WaitUntil(predicate: () => LoginTask.IsCompleted);
@@ -114,11 +112,11 @@ public class FirebaseManager : MonoBehaviour {
             SceneManager.LoadScene("MainScene");
             confirmLoginText.text = "";
         }
+        
+        ClearLoginFields();
     }
 
-    private IEnumerator Register(string correu, string contrasena, string nom) {
-        ClearRegisterFields();
-        
+    private IEnumerator Register(string correu, string contrasena, string nom) {        
         if (nom == "") {
             warningRegisterText.text = "Falta el nombre de usuario";
             
@@ -175,6 +173,8 @@ public class FirebaseManager : MonoBehaviour {
                         IngressManager.instance.LoginScreen();
                     }
                 }
+
+                ClearRegisterFields();
             }
         }
     }
