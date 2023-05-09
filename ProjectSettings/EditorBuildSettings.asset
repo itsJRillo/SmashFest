@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 714cb0c335e983d4581d27f259778d0f
   - enabled: 1
+    path: Assets/Scenes/MultiplayerForestScene.unity
+    guid: 96608c18b1c8d1c41a97292107c01b4f
+  - enabled: 1
     path: Assets/Scenes/ForestScene.unity
     guid: dfa4b4308a819e14791934e450dc57f2
   m_configObjects: {}

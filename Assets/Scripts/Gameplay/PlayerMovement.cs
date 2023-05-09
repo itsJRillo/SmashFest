@@ -2,6 +2,7 @@ using UnityEngine;
 
 using System.Collections;
 using System.Linq;
+using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour {
     private float horizontal;
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpingPower = 16f;
     private bool isFacingRight = true;
     public Animator animator;
+    PhotonView view;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -18,6 +20,10 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private Vector2 sizeHit;
     [SerializeField] private float damageHit;
     [SerializeField] private float attackCooldown;
+
+    void Start() {
+        view = GetComponent<PhotonView>();
+    }
 
     private void hit() {
         Collider2D[] obj = Physics2D.OverlapBoxAll(controllerHit.position, sizeHit, 0f);
@@ -51,32 +57,34 @@ public class PlayerMovement : MonoBehaviour {
         Gizmos.DrawWireCube(controllerHit.position, sizeHit);    
     }
 
-    void Update()
-    {
-        horizontal = Input.GetAxisRaw("Horizontal");
+    void Update() {
+        if(view.IsMine){
+            horizontal = Input.GetAxisRaw("Horizontal");    
 
-        if (Input.GetButtonDown("Jump") && IsGrounded()) {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            if (Input.GetButtonDown("Jump") && IsGrounded()) {
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            }
+
+            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f) {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E)) {
+                StartCoroutine(attack());
+            } else if(Input.GetKeyUp(KeyCode.E)){
+                animator.SetBool("isAttacking", false);
+            }
+
+            if(Input.GetKey(KeyCode.R)) {
+                StartCoroutine(charge());
+            } else if(Input.GetKeyUp(KeyCode.R)){
+                animator.SetBool("Charging", false);
+                hit();
+            }
+
+            Flip();
         }
-
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f) {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E)) {
-            StartCoroutine(attack());
-        } else if(Input.GetKeyUp(KeyCode.E)){
-            animator.SetBool("isAttacking", false);
-        }
-
-        if(Input.GetKey(KeyCode.R)) {
-            StartCoroutine(charge());
-        } else if(Input.GetKeyUp(KeyCode.R)){
-            animator.SetBool("Charging", false);
-            hit();
-        }
-
-        Flip();
+        
     }
     
     public IEnumerator attack(){
