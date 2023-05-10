@@ -4,11 +4,8 @@ using Pathfinding;
 using System.Collections;
 using System.Linq;
 
-public class EnemyMovement : MonoBehaviour
-{
-    private float horizontal;
-    private bool isAttacking = false;
-
+public class EnemyMovement : MonoBehaviour {
+    
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -17,6 +14,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Vector2 sizeHit;
     [SerializeField] private float damageHit;
 
+    private bool isAttacking = false;
+    private float horizontal;
     public float speed = 8f;
     public float jumpingPower = 16f;
     public AIPath aiPath;
@@ -29,10 +28,10 @@ public class EnemyMovement : MonoBehaviour
 
         foreach (Collider2D item in obj) {
             if(item.CompareTag("Player")){
-                item.transform.GetComponent<PlayerStatus>().animator.SetTrigger("hitted");
-
-                animator.SetTrigger("isAttacking");
                 StartCoroutine(ApplyDamage(item.transform));
+                animator.SetTrigger("isAttacking");
+
+                item.transform.GetComponent<PlayerStatus>().animator.SetTrigger("hitted");
             }
         }
     }

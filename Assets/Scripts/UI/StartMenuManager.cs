@@ -53,6 +53,11 @@ public class StartMenuManager : MonoBehaviour {
         SceneManager.LoadScene("CharacterSelection");
     }
 
+    public void Training() {
+        
+        SceneManager.LoadScene("CharacterSelection");
+    }
+
     public void Multiplayer() {
         
         SceneManager.LoadScene("LoadingScene");

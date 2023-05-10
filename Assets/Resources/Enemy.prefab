@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6461553575986760649}
-  enemyHealth: 500
+  enemyHealth: 300
   maxHealth: 500
   healthBar: {fileID: 0}
 --- !u!61 &6461553575986760647
