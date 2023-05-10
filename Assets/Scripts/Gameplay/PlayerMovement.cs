@@ -58,33 +58,30 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update() {
-        if(view.IsMine){
-            horizontal = Input.GetAxisRaw("Horizontal");    
+        horizontal = Input.GetAxisRaw("Horizontal");    
 
-            if (Input.GetButtonDown("Jump") && IsGrounded()) {
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            }
-
-            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f) {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            }
-
-            if (Input.GetKeyDown(KeyCode.E)) {
-                StartCoroutine(attack());
-            } else if(Input.GetKeyUp(KeyCode.E)){
-                animator.SetBool("isAttacking", false);
-            }
-
-            if(Input.GetKey(KeyCode.R)) {
-                StartCoroutine(charge());
-            } else if(Input.GetKeyUp(KeyCode.R)){
-                animator.SetBool("Charging", false);
-                hit();
-            }
-
-            Flip();
+        if (Input.GetButtonDown("Jump") && IsGrounded()) {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
-        
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f) {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E)) {
+            StartCoroutine(attack());
+        } else if(Input.GetKeyUp(KeyCode.E)){
+            animator.SetBool("isAttacking", false);
+        }
+
+        if(Input.GetKey(KeyCode.R)) {
+            StartCoroutine(charge());
+        } else if(Input.GetKeyUp(KeyCode.R)){
+            animator.SetBool("Charging", false);
+            hit();
+        }
+
+        Flip();
     }
     
     public IEnumerator attack(){

@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
         foreach (Collider2D item in obj) {
             if(item.CompareTag("Player")){
                 item.transform.GetComponent<PlayerStatus>().animator.SetTrigger("hitted");
-                
+
                 animator.SetTrigger("isAttacking");
                 StartCoroutine(ApplyDamage(item.transform));
             }
@@ -40,6 +40,7 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator ApplyDamage(Transform playerTransform) {
         PlayerStatus player = playerTransform.GetComponent<PlayerStatus>();
         player.playerHealth -= damageHit;
+        Debug.Log("Enemy inflicted " + damageHit + " damage to player. Player's current health: " + player.playerHealth);
         yield return null;
         if(player.playerHealth <= 0) {
             StartCoroutine(death(playerTransform));
@@ -70,21 +71,23 @@ public class EnemyMovement : MonoBehaviour
 
         } else if (aiPath.desiredVelocity.x <= -0.01f){
             transform.localScale = new Vector2(-1f,1f);
-        }  
+        }
+        Debug.Log("Desired Velocity: " + aiPath.desiredVelocity);
     }
 
     IEnumerator attack() {
         isAttacking = true;
         hit();
+        Debug.Log("Enemy attacking player...");
         yield return new WaitForSeconds(1);
         isAttacking = false;
+        Debug.Log("Enemy attack finished.");
     }
 
     IEnumerator death(Transform player) {
         player.GetComponent<PlayerStatus>().animator.SetTrigger("isDead");
-
+        Debug.Log("Enemy killed player. Game over!");
         yield return new WaitForSeconds (3);
-
         CountdownTimer.gameOver = true;
         Time.timeScale = 0f;
     }
@@ -92,6 +95,7 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate() {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
+        Debug.Log("Enemy velocity: " + rb.velocity);
     }
 
     private bool IsGrounded() {

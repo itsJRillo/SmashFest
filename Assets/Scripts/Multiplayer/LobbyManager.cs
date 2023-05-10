@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
+using TMPro;
 using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
-using TMPro;
+using UnityEngine.SceneManagement;
 
-public class StartMenuManager : MonoBehaviour {
-    
+public class LobbyManager : MonoBehaviourPunCallbacks {
+
     private DependencyStatus status;
     private DatabaseReference db;
     FirebaseAuth auth;
     FirebaseUser user;
+
+    public TMP_InputField roomInput;
+    public GameObject lobbyPanel;
+    public GameObject roomPanel;
+    public TMP_Text roomName;
     public TMP_Text username;
 
     void Awake() {
@@ -36,26 +44,35 @@ public class StartMenuManager : MonoBehaviour {
     }
 
     void Start() {
+        PhotonNetwork.JoinLobby();
+
         auth = FirebaseAuth.DefaultInstance;
         user = auth.CurrentUser;
 
         if (user != null) {
             string displayName = user.DisplayName;
-            string uid = user.UserId;
-
-            username.text = displayName;
+            username.text = "username: " + displayName;
         } else {
             Debug.Log("Not");
         }
     }
 
-    public void Play() {
-        SceneManager.LoadScene("CharacterSelection");
+    public void OnClickCreate(){
+        if(roomInput.text.Length >= 1) {
+            PhotonNetwork.CreateRoom(roomInput.text, new RoomOptions() { 
+                MaxPlayers = 2 
+            });
+        }
     }
 
-    public void Multiplayer() {
-        
-        SceneManager.LoadScene("LoadingScene");
+    public override void OnJoinedRoom() {
+        lobbyPanel.SetActive(false);
+        roomPanel.SetActive(true);
+        roomName.text = "Room name:" + PhotonNetwork.CurrentRoom.Name;
+    }
+
+    public void goToMain() {
+        SceneManager.LoadScene("MainScene");
     }
 
 }
