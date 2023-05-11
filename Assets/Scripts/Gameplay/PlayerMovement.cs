@@ -86,8 +86,6 @@ public class PlayerMovement : MonoBehaviour {
     
     public IEnumerator attack(){
         animator.SetBool("isAttacking", true);
-        hit();
-
         yield return new WaitForSeconds(2);
     }
 

@@ -27,4 +27,9 @@ public class CharacterSelection : MonoBehaviour {
         PlayerPrefs.SetInt("characterSelected", characterSelected);
         SceneManager.LoadScene("ForestScene");
     }
+
+    public void StartTraining() {
+        PlayerPrefs.SetInt("characterSelected", characterSelected);
+        SceneManager.LoadScene("TrainingScene");
+    }
 }
