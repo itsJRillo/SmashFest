@@ -65,7 +65,7 @@ Transform:
   m_GameObject: {fileID: 6039054026799544048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18, y: -4, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 35, y: 35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6039054027268289396}
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 100
   maxHealth: 0
+  numberHits: 0
   healthBar: {fileID: 0}
   animator: {fileID: 6039054026799544049}
 --- !u!114 &6039054026799544054

@@ -30,9 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelectionTraining.unity
     guid: 4fec25d364854634ea108e40374d8335
   - enabled: 1
-    path: Assets/Scenes/MultiplayerCharacterSelection.unity
-    guid: 7920d88f67cd5dc41be037df257e45e5
-  - enabled: 1
-    path: Assets/Scenes/MultiplayerForestScene.unity
+    path: Assets/Scenes/MultiplayerGame.unity
     guid: 96608c18b1c8d1c41a97292107c01b4f
   m_configObjects: {}
