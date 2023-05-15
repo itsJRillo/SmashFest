@@ -66,10 +66,10 @@ public class EnemyMovement : MonoBehaviour {
         }
 
         if(aiPath.desiredVelocity.x >= 0.01f){
-            transform.localScale = new Vector2(1f,1f);
+            transform.localScale = new Vector2(1.5f,1.5f);
 
         } else if (aiPath.desiredVelocity.x <= -0.01f){
-            transform.localScale = new Vector2(-1f,1f);
+            transform.localScale = new Vector2(-1.5f,1.5f);
         }
         Debug.Log("Desired Velocity: " + aiPath.desiredVelocity);
     }

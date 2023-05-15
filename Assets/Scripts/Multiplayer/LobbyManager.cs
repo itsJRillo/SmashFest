@@ -50,7 +50,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
         if(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2){
             playButton.SetActive(true);
         } else {
-            playButton.SetActive(true);
+            playButton.SetActive(false);
         }
     }
 
@@ -154,6 +154,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
         foreach(KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players) {
             CardRoom newPlayer = Instantiate(playerPrefab, contentPlayers);
             newPlayer.SetPlayerName(displayName);
+            Debug.Log(player.Value);
             newPlayer.SetPlayer(player.Value);
 
             if(player.Value == PhotonNetwork.LocalPlayer) {

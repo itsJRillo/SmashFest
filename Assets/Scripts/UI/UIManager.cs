@@ -51,4 +51,8 @@ public class UIManager : MonoBehaviour
         leaderboardUI.SetActive(false);
         configurationUI.SetActive(true);
     }
+
+    public void QuitGame() {
+        Application.Quit();
+    }
 }
