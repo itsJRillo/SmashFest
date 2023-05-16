@@ -137,7 +137,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10.938423
+  m_Mass: 33.49892
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 9.81
@@ -196,6 +196,10 @@ MonoBehaviour:
   sizeHit: {x: 9, y: 5}
   damageHit: 50
   attackCooldown: 1
+  horizontalInput: 0
+  jumpInput: 0
+  attackInput: 0
+  chargeInput: 0
 --- !u!114 &3722640229819112782
 MonoBehaviour:
   m_ObjectHideFlags: 0

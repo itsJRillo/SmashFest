@@ -25,11 +25,8 @@ public class CardRoom : MonoBehaviourPunCallbacks {
         background = GetComponent<Image>();
     }
 
-    public void SetPlayerName(string _playerName) {
-        playerName.text = _playerName;
-    }
-
     public void SetPlayer(Player _player) {
+        playerName.text = _player.NickName;
         player = _player;
         UpdatePlayerCard(player);
     }

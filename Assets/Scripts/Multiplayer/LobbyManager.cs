@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
-using Photon.Realtime;
+using UnityEngine.SceneManagement;
 using TMPro;
+
 using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
-using UnityEngine.SceneManagement;
+
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LobbyManager : MonoBehaviourPunCallbacks {
 
@@ -17,6 +21,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
     FirebaseAuth auth;
     FirebaseUser user;
     private string displayName;
+    private const string GameDataKey = "GameData";
+    private const string PlayerIndexKey = "PlayerIndex";
 
     public TMP_InputField roomInput;
     public GameObject lobbyPanel;
@@ -83,13 +89,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
         }
     }
 
-    public void OnClickCreate(){
-        if(roomInput.text.Length >= 1) {
-            PhotonNetwork.CreateRoom(roomInput.text, new RoomOptions() { 
-                MaxPlayers = 2, BroadcastPropsChangeToAll = true
+    public void OnClickCreate() {
+        if (roomInput.text.Length >= 1)
+        {
+            Hashtable gameData = new Hashtable();
+            gameData[PlayerIndexKey] = 1; // El índice del jugador que crea la partida es 1
+
+            PhotonNetwork.CreateRoom(roomInput.text, new RoomOptions() {
+                MaxPlayers = 2,
+                BroadcastPropsChangeToAll = true,
+                CustomRoomProperties = gameData,
+                CustomRoomPropertiesForLobby = new string[] { PlayerIndexKey }
             });
         }
     }
+
 
     public override void OnJoinedRoom() {
         lobbyPanel.SetActive(false);
@@ -98,13 +112,26 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
         UpdatePlayerList();
     }
 
-    public override void OnRoomListUpdate(List<RoomInfo> roomList) {
+    public void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged) {
+        if (propertiesThatChanged.ContainsKey(GameDataKey)) {
+            Hashtable gameData = (Hashtable)propertiesThatChanged[GameDataKey];
 
+            if (gameData.ContainsKey(PlayerIndexKey)) {
+                int playerIndex = (int)gameData[PlayerIndexKey];
+
+                if (playerIndex == PhotonNetwork.LocalPlayer.ActorNumber) {
+                    // El jugador local ha sido diferenciado y puede realizar acciones específicas
+                }
+            }
+        }
+    }
+
+
+    public override void OnRoomListUpdate(List<RoomInfo> roomList) {
         if(Time.time >= updateTime){
             UpdateRoomList(roomList);
             updateTime = Time.time + 1.5f;
         }
-
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer) {
@@ -147,28 +174,55 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
         }
         listPlayers.Clear();
 
-        if(PhotonNetwork.CurrentRoom == null){
+        if (PhotonNetwork.CurrentRoom == null) {
             return;
         }
 
-        foreach(KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players) {
+        foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players) {
             CardRoom newPlayer = Instantiate(playerPrefab, contentPlayers);
-            newPlayer.SetPlayerName(displayName);
-            Debug.Log(player.Value);
+
+            if (player.Value.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber) {
+                // Establece el índice del jugador local en las propiedades de la sala
+                Hashtable gameData = PhotonNetwork.CurrentRoom.CustomProperties;
+                gameData[PlayerIndexKey] = player.Value.ActorNumber;
+                PhotonNetwork.CurrentRoom.SetCustomProperties(gameData);
+                player.Value.NickName = displayName;
+            }
+
             newPlayer.SetPlayer(player.Value);
 
-            if(player.Value == PhotonNetwork.LocalPlayer) {
+            if (player.Value == PhotonNetwork.LocalPlayer) {
                 newPlayer.ApplyChanges();
             }
+            
+            // Actualiza el NickName del jugador creador de la sala
+            if (PhotonNetwork.IsMasterClient && player.Value.ActorNumber == PhotonNetwork.CurrentRoom.MasterClientId) {
+                player.Value.NickName = displayName;
+            }
+
             listPlayers.Add(newPlayer);
         }
     }
+
+    /*
+    void saveGame() {
+        // Obtener una referencia a la colección "Partides" para el jugador actual
+        var partidesRef = db.Child("Partides").Child(Usuari.UserId);
+
+        // Guardar el número de victorias en la colección "Partides" para el jugador
+        int victorias = 5; // Ejemplo de número de victorias
+        var victoriasTask = partidesRef.Child("victorias").SetValueAsync(victorias);
+
+        yield return new WaitUntil(predicate: () => victoriasTask.IsCompleted);
+    }
+    */
 
     public override void OnConnectedToMaster() {
         PhotonNetwork.JoinLobby();
     }
 
     public void goToMain() {
+        PhotonNetwork.LeaveLobby();
         SceneManager.LoadScene("MainScene");
     }
 }
