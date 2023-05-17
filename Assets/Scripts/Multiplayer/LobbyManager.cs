@@ -118,10 +118,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
 
             if (gameData.ContainsKey(PlayerIndexKey)) {
                 int playerIndex = (int)gameData[PlayerIndexKey];
-
-                if (playerIndex == PhotonNetwork.LocalPlayer.ActorNumber) {
-                    // El jugador local ha sido diferenciado y puede realizar acciones específicas
-                }
             }
         }
     }
@@ -182,7 +178,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
             CardRoom newPlayer = Instantiate(playerPrefab, contentPlayers);
 
             if (player.Value.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber) {
-                // Establece el índice del jugador local en las propiedades de la sala
                 Hashtable gameData = PhotonNetwork.CurrentRoom.CustomProperties;
                 gameData[PlayerIndexKey] = player.Value.ActorNumber;
                 PhotonNetwork.CurrentRoom.SetCustomProperties(gameData);
@@ -194,8 +189,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
             if (player.Value == PhotonNetwork.LocalPlayer) {
                 newPlayer.ApplyChanges();
             }
-            
-            // Actualiza el NickName del jugador creador de la sala
+
             if (PhotonNetwork.IsMasterClient && player.Value.ActorNumber == PhotonNetwork.CurrentRoom.MasterClientId) {
                 player.Value.NickName = displayName;
             }

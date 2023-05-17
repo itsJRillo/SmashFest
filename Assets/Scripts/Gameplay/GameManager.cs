@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public Canvas canvas;
     public CountdownTimer timer;
 
-    // Start is called before the first frame update
     void Start() {
         int characterSelected = PlayerPrefs.GetInt("characterSelected");
         GameObject prefab = characters[characterSelected];

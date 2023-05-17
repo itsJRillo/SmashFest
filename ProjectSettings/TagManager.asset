@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Pathfinder
+  - Canvas
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour {
     [SerializeField] private float damageHit;
 
     private bool isAttacking = false;
+    private bool isDead = false;
     private float horizontal;
     public float speed = 8f;
     public float jumpingPower = 16f;
@@ -59,7 +60,11 @@ public class EnemyMovement : MonoBehaviour {
 
         if(distance < 10f){
             if(!isAttacking){
-                StartCoroutine(attack());
+                if(isDead){
+                    Debug.Log("Player is dead");
+                } else {
+                    StartCoroutine(attack());
+                }
             }
         } else {
             animator.SetFloat("Speed", Mathf.Abs(aiPath.desiredVelocity.magnitude));
@@ -84,8 +89,8 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     IEnumerator death(Transform player) {
+        isDead = true;
         player.GetComponent<PlayerStatus>().animator.SetTrigger("isDead");
-        Debug.Log("Enemy killed player. Game over!");
         yield return new WaitForSeconds (3);
         CountdownTimer.gameOver = true;
         Time.timeScale = 0f;
@@ -94,7 +99,6 @@ public class EnemyMovement : MonoBehaviour {
     private void FixedUpdate() {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
-        Debug.Log("Enemy velocity: " + rb.velocity);
     }
 
     private bool IsGrounded() {

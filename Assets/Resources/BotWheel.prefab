@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 5875048752424599807}
   - component: {fileID: 5875048752424599802}
   - component: {fileID: 5875048752424599801}
-  - component: {fileID: 8414623715540217757}
-  - component: {fileID: 4041415744113868405}
-  - component: {fileID: -6579449233066323781}
+  - component: {fileID: -9002255289699531257}
+  - component: {fileID: 1888220505620754215}
+  - component: {fileID: 3360480953332215857}
   m_Layer: 7
   m_Name: BotWheel
   m_TagString: Player
@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 5875048752424599792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14, y: -5, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 10.1811}
+  m_LocalScale: {x: 60, y: 60, z: 10.1811}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5875048753225057848}
@@ -115,7 +115,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   controllerHit: {fileID: 4363319647393540664}
-  sizeHit: {x: 6, y: 5}
+  sizeHit: {x: 10, y: 8}
   damageHit: 20
   attackCooldown: 1
 --- !u!114 &5875048752424599806
@@ -147,7 +147,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 8.84
+  m_Mass: 79.55999
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 9.81
@@ -203,7 +203,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13, y: 0.17}
   m_EdgeRadius: 0
---- !u!114 &8414623715540217757
+--- !u!114 &-9002255289699531257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,12 +222,13 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 4041415744113868405}
-  - {fileID: -6579449233066323781}
+  - {fileID: 5875048752424599805}
+  - {fileID: 1888220505620754215}
+  - {fileID: 3360480953332215857}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &4041415744113868405
+--- !u!114 &1888220505620754215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,16 +252,16 @@ MonoBehaviour:
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
-    SynchronizeEnabled: 0
+    SynchronizeEnabled: 1
     InterpolateOption: 1
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
-    SynchronizeEnabled: 0
+    SynchronizeEnabled: 1
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &-6579449233066323781
+--- !u!114 &3360480953332215857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

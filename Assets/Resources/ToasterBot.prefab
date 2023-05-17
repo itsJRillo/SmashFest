@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3467572402792714656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.454, y: -0.024, z: 0}
+  m_LocalPosition: {x: 0.463, y: -0.032, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,9 +46,9 @@ GameObject:
   - component: {fileID: 6039054026799544051}
   - component: {fileID: 6039054026799544050}
   - component: {fileID: 6039054026799544049}
-  - component: {fileID: 1412039027009091839}
-  - component: {fileID: 3380696504991646781}
-  - component: {fileID: 2826848242720827456}
+  - component: {fileID: 2084357606425478236}
+  - component: {fileID: -537474565534288026}
+  - component: {fileID: 3411041822372504302}
   m_Layer: 7
   m_Name: ToasterBot
   m_TagString: Player
@@ -64,8 +64,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6039054026799544048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18, y: -4, z: 0}
-  m_LocalScale: {x: 35, y: 35, z: 1}
+  m_LocalPosition: {x: -19.8, y: -4, z: 0}
+  m_LocalScale: {x: 35, y: 35, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6039054027268289396}
@@ -157,13 +157,14 @@ MonoBehaviour:
   speed: 25
   jumpingPower: 30
   animator: {fileID: 6039054026799544049}
+  canvas: {fileID: 0}
   rb: {fileID: 6039054026799544050}
   groundCheck: {fileID: 6039054027268289396}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   controllerHit: {fileID: 2345285292009382373}
-  sizeHit: {x: 25, y: 5}
+  sizeHit: {x: 50, y: 8}
   damageHit: 50
   attackCooldown: 3
 --- !u!61 &6039054026799544051
@@ -204,7 +205,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 9.664368
+  m_Mass: 86.9793
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 9.81
@@ -234,7 +235,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1412039027009091839
+--- !u!114 &2084357606425478236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,12 +254,12 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 3380696504991646781}
-  - {fileID: 2826848242720827456}
+  - {fileID: 6039054026799544054}
+  - {fileID: -537474565534288026}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3380696504991646781
+--- !u!114 &-537474565534288026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,16 +283,16 @@ MonoBehaviour:
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
-    SynchronizeEnabled: 0
+    SynchronizeEnabled: 1
     InterpolateOption: 1
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
-    SynchronizeEnabled: 0
+    SynchronizeEnabled: 1
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &2826848242720827456
+--- !u!114 &3411041822372504302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,25 +306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 1
-    SynchronizeType: 0
-    Name: Speed
-  - Type: 4
-    SynchronizeType: 0
-    Name: isAttacking
-  - Type: 4
-    SynchronizeType: 0
-    Name: Charging
-  - Type: 9
-    SynchronizeType: 0
-    Name: hitted
-  - Type: 9
-    SynchronizeType: 0
-    Name: isDead
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
 --- !u!1 &6039054027268289395
 GameObject:
   m_ObjectHideFlags: 0
