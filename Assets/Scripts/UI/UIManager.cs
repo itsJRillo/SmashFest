@@ -6,13 +6,14 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    //Screen object variables
-    public GameObject menuUI;
     public GameObject startMenuUI;
+
     public GameObject leaderboardUI;
+
     public GameObject configurationUI;
 
-    private void Awake() {
+    private void Awake()
+    {
         if (instance == null)
         {
             instance = this;
@@ -24,35 +25,29 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void MenuScreen() {
-        menuUI.SetActive(true);
-        startMenuUI.SetActive(false);
-        leaderboardUI.SetActive(false);
-        configurationUI.SetActive(false);
-    }
-
-    public void StartMenuScreen() {
-        menuUI.SetActive(false);
+    public void StartMenuScreen()
+    {
         startMenuUI.SetActive(true);
         leaderboardUI.SetActive(false);
         configurationUI.SetActive(false);
     }
 
-    public void LeaderboardScreen() {
-        menuUI.SetActive(false);
+    public void LeaderboardScreen()
+    {
         startMenuUI.SetActive(false);
         leaderboardUI.SetActive(true);
         configurationUI.SetActive(false);
     }
 
-    public void ConfigurationScreen() {
-        menuUI.SetActive(false);
+    public void ConfigurationScreen()
+    {
         startMenuUI.SetActive(false);
         leaderboardUI.SetActive(false);
         configurationUI.SetActive(true);
     }
 
-    public void QuitGame() {
+    public void QuitGame()
+    {
         Application.Quit();
     }
 }

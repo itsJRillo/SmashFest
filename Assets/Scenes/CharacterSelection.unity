@@ -471,7 +471,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5f1ba8a3372ab964ba619dc09814a04a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -805,6 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverSound: {fileID: 8300000, guid: 46b5582616b5cbd4397d29c9c15af410, type: 3}
+  volume: 0.5
 --- !u!1 &849559689
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,6 +962,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 543427702}
     m_Modifications:
     - target: {fileID: 1412039027009091839, guid: d0cde9963bf7b524084df4b763163206, type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084357606425478236, guid: d0cde9963bf7b524084df4b763163206, type: 3}
       propertyPath: sceneViewId
       value: 4
       objectReference: {fileID: 0}
@@ -1146,6 +1151,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6077570645372147128, guid: 55ee979712c9a3e418e402e8a3eecce3, type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55ee979712c9a3e418e402e8a3eecce3, type: 3}
 --- !u!1 &1278061653
@@ -1310,6 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverSound: {fileID: 8300000, guid: 46b5582616b5cbd4397d29c9c15af410, type: 3}
+  volume: 0.5
 --- !u!1 &1413221668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6039054026799544048, guid: d0cde9963bf7b524084df4b763163206, type: 3}
@@ -1478,6 +1488,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 543427702}
     m_Modifications:
     - target: {fileID: 260694490639267214, guid: 8c9c0735e97240d4891e7944d6aff5fb, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715109247337092274, guid: 8c9c0735e97240d4891e7944d6aff5fb, type: 3}
       propertyPath: sceneViewId
       value: 2
       objectReference: {fileID: 0}
@@ -1734,6 +1748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverSound: {fileID: 8300000, guid: 65293ee374074b54898ea75f79f1cd95, type: 3}
+  volume: 0.5
 --- !u!1 &2022590283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1821,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 543427702}
     m_Modifications:
+    - target: {fileID: -9002255289699531257, guid: 9990b7dfe332ff443b35788d5a0f62e1, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5875048752424599792, guid: 9990b7dfe332ff443b35788d5a0f62e1, type: 3}
       propertyPath: m_Name
       value: BotWheel

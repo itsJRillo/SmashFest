@@ -184,6 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbc5506df453d447bc2a7029bed21b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: 3cdc41454994d0a45b574aacbd2ec12a, type: 3}
+  audio: {fileID: 0}
   speed: 30
   jumpingPower: 50
   animator: {fileID: 3722640229819112783}

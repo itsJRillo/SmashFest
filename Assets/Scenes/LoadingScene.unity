@@ -387,6 +387,8 @@ MonoBehaviour:
   - MainScene
   - LoadingScene
   - Lobby
+  audioSource: {fileID: 751376966}
+  volume: 0.25
   instanceName: MainMusic
 --- !u!4 &751376968
 Transform:

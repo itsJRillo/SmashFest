@@ -1,107 +1,166 @@
-using UnityEngine;
-using Pathfinding;
-
 using System.Collections;
 using System.Linq;
+using Pathfinding;
+using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour {
-    
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
+public class EnemyMovement : MonoBehaviour
+{
+    [SerializeField]
+    private Rigidbody2D rb;
 
-    [SerializeField] private Transform controllerHit;
-    [SerializeField] private Vector2 sizeHit;
-    [SerializeField] private float damageHit;
+    [SerializeField]
+    private Transform groundCheck;
+
+    [SerializeField]
+    private LayerMask groundLayer;
+
+    [SerializeField]
+    private Transform controllerHit;
+
+    [SerializeField]
+    private Vector2 sizeHit;
+
+    [SerializeField]
+    private float damageHit;
+
+    public AudioClip hitSound;
+
+    public AudioSource audio;
 
     private bool isAttacking = false;
+
     private bool isDead = false;
+
     private float horizontal;
+
     public float speed = 8f;
+
     public float jumpingPower = 16f;
+
     public AIPath aiPath;
+
     public Animator animator;
 
-    private void hit() {
-        if(!isAttacking) return;
+    void Start()
+    {
+        audio = GetComponent<AudioSource>();
+        if (audio == null) audio = gameObject.AddComponent<AudioSource>();
+    }
 
-        Collider2D[] obj = Physics2D.OverlapBoxAll(controllerHit.position, sizeHit, 0f);
+    private void hit()
+    {
+        if (!isAttacking) return;
 
-        foreach (Collider2D item in obj) {
-            if(item.CompareTag("Player")){
+        Collider2D[] obj =
+            Physics2D.OverlapBoxAll(controllerHit.position, sizeHit, 0f);
+
+        foreach (Collider2D item in obj)
+        {
+            if (item.CompareTag("Player"))
+            {
                 StartCoroutine(ApplyDamage(item.transform));
+                audio.clip = hitSound;
+                audio.Play();
                 animator.SetTrigger("isAttacking");
 
-                item.transform.GetComponent<PlayerStatus>().animator.SetTrigger("hitted");
+                item
+                    .transform
+                    .GetComponent<PlayerStatus>()
+                    .animator
+                    .SetTrigger("hitted");
             }
         }
     }
 
-    IEnumerator ApplyDamage(Transform playerTransform) {
+    IEnumerator ApplyDamage(Transform playerTransform)
+    {
         PlayerStatus player = playerTransform.GetComponent<PlayerStatus>();
         player.playerHealth -= damageHit;
-        Debug.Log("Enemy inflicted " + damageHit + " damage to player. Player's current health: " + player.playerHealth);
+        Debug
+            .Log("Enemy inflicted " +
+            damageHit +
+            " damage to player. Player's current health: " +
+            player.playerHealth);
         yield return null;
-        if(player.playerHealth <= 0) {
+        if (player.playerHealth <= 0)
+        {
             StartCoroutine(death(playerTransform));
         }
     }
 
-
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos()
+    {
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(controllerHit.position, sizeHit);    
+        Gizmos.DrawWireCube(controllerHit.position, sizeHit);
     }
 
-    void Update() {
+    void Update()
+    {
         GameObject player = GameObject.FindWithTag("Player");
 
-        float distance = Mathf.Abs(transform.position.x - player.transform.position.x);
+        float distance =
+            Mathf.Abs(transform.position.x - player.transform.position.x);
 
-        if(distance < 10f){
-            if(!isAttacking){
-                if(isDead){
+        if (distance < 10f)
+        {
+            if (!isAttacking)
+            {
+                if (isDead)
+                {
                     Debug.Log("Player is dead");
-                } else {
+                }
+                else
+                {
                     StartCoroutine(attack());
                 }
             }
-        } else {
-            animator.SetFloat("Speed", Mathf.Abs(aiPath.desiredVelocity.magnitude));
+        }
+        else
+        {
+            animator
+                .SetFloat("Speed", Mathf.Abs(aiPath.desiredVelocity.magnitude));
         }
 
-        if(aiPath.desiredVelocity.x >= 0.01f){
-            transform.localScale = new Vector2(1.5f,1.5f);
-
-        } else if (aiPath.desiredVelocity.x <= -0.01f){
-            transform.localScale = new Vector2(-1.5f,1.5f);
+        if (aiPath.desiredVelocity.x >= 0.01f)
+        {
+            transform.localScale = new Vector2(1.5f, 1.5f);
+        }
+        else if (aiPath.desiredVelocity.x <= -0.01f)
+        {
+            transform.localScale = new Vector2(-1.5f, 1.5f);
         }
         Debug.Log("Desired Velocity: " + aiPath.desiredVelocity);
     }
 
-    IEnumerator attack() {
+    IEnumerator attack()
+    {
         isAttacking = true;
         hit();
+
         Debug.Log("Enemy attacking player...");
         yield return new WaitForSeconds(1);
+
         isAttacking = false;
         Debug.Log("Enemy attack finished.");
     }
 
-    IEnumerator death(Transform player) {
+    IEnumerator death(Transform player)
+    {
         isDead = true;
         player.GetComponent<PlayerStatus>().animator.SetTrigger("isDead");
-        yield return new WaitForSeconds (3);
+        yield return new WaitForSeconds(3);
         CountdownTimer.gameOver = true;
         Time.timeScale = 0f;
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
     }
 
-    private bool IsGrounded() {
+    private bool IsGrounded()
+    {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 }

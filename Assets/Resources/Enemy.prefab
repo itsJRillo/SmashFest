@@ -111,6 +111,8 @@ MonoBehaviour:
   controllerHit: {fileID: 6461553577415698026}
   sizeHit: {x: 13, y: 25}
   damageHit: 5
+  hitSound: {fileID: 8300000, guid: c1a0fd730abaf7e47bee2dbd5e249d9e, type: 3}
+  audio: {fileID: 0}
   speed: 8
   jumpingPower: 16
   aiPath: {fileID: 0}

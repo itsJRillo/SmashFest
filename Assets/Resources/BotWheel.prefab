@@ -106,9 +106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbc5506df453d447bc2a7029bed21b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: b4d7e54b4615b5f4cafa7a8fe4d99b21, type: 3}
+  audio: {fileID: 0}
   speed: 20
   jumpingPower: 30
   animator: {fileID: 5875048752424599802}
+  canvas: {fileID: 0}
   rb: {fileID: 5875048752424599807}
   groundCheck: {fileID: 5875048753225057848}
   groundLayer:
