@@ -6,11 +6,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    //Screen object variables
-    public GameObject loginUI;
-    public GameObject registerUI;
-    public GameObject menuUI;
     public GameObject startMenuUI;
+
+    public GameObject leaderboardUI;
+
+    public GameObject configurationUI;
 
     private void Awake()
     {
@@ -25,18 +25,29 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void LoginScreen(){
-        loginUI.SetActive(true);
-        registerUI.SetActive(false);
+    public void StartMenuScreen()
+    {
+        startMenuUI.SetActive(true);
+        leaderboardUI.SetActive(false);
+        configurationUI.SetActive(false);
     }
 
-    public void RegisterScreen(){
-        loginUI.SetActive(false);
-        registerUI.SetActive(true);
+    public void LeaderboardScreen()
+    {
+        startMenuUI.SetActive(false);
+        leaderboardUI.SetActive(true);
+        configurationUI.SetActive(false);
     }
 
-    public void menuScreen(){
-        loginUI.SetActive(false);
-        registerUI.SetActive(false);
+    public void ConfigurationScreen()
+    {
+        startMenuUI.SetActive(false);
+        leaderboardUI.SetActive(false);
+        configurationUI.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
