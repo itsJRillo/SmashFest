@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1594506253673570205, guid: ff83fa5e49e76504e8f2942e3ca54222, type: 3}
       propertyPath: m_Name
-      value: Timer
+      value: Timer Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1594506253917794641, guid: ff83fa5e49e76504e8f2942e3ca54222, type: 3}
       propertyPath: m_Sprite
@@ -284,21 +284,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &6634955103504252015 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1594506253673570205, guid: ff83fa5e49e76504e8f2942e3ca54222, type: 3}
-  m_PrefabInstance: {fileID: 5347121300233200626}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &424585612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6634955103504252015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc05336b7c700744a3d4a5bef88918c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 424585611}
