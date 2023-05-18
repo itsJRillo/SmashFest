@@ -216,7 +216,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
     }
 
     public void goToMain() {
-        PhotonNetwork.LeaveLobby();
-        SceneManager.LoadScene("MainScene");
+        PhotonNetwork.Disconnect();
     }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        SceneManager.LoadScene("MainScene"); // Carga la escena del menú principal
+    }
+
+    
 }

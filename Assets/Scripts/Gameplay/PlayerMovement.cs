@@ -60,30 +60,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         audio = GetComponent<AudioSource>();
         if (audio == null) audio = gameObject.AddComponent<AudioSource>();
 
-        if (PhotonNetwork.IsConnected)
-        {
+        if (PhotonNetwork.IsConnected) {
             view = GetComponent<PhotonView>();
-            canvas = GameObject.FindWithTag("Canvas").GetComponent<Canvas>();
-            if (!view.IsMine)
-            {
-                rb.bodyType = RigidbodyType2D.Static;
-
-                PlayerStatus playerStatus = GetComponent<PlayerStatus>();
-                playerStatus.healthBar =
-                    canvas
-                        .transform
-                        .Find("HealthBar_Enemy")
-                        .GetComponent<Image>();
-            }
-            else
-            {
-                PlayerStatus playerStatus = GetComponent<PlayerStatus>();
-                playerStatus.healthBar =
-                    canvas
-                        .transform
-                        .Find("HealthBar_Player")
-                        .GetComponent<Image>();
-            }
         }
     }
 

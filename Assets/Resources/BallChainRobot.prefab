@@ -47,8 +47,8 @@ GameObject:
   - component: {fileID: 3722640229819112782}
   - component: {fileID: 3722640229819112783}
   - component: {fileID: 1715109247337092274}
-  - component: {fileID: 6403526172553662045}
   - component: {fileID: 1097726951135587244}
+  - component: {fileID: 6841466133589254731}
   m_Layer: 7
   m_Name: BallChainRobot
   m_TagString: Player
@@ -65,7 +65,7 @@ Transform:
   m_GameObject: {fileID: 3722640229819112817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20, y: -3.56, z: 0}
-  m_LocalScale: {x: 60, y: 60, z: 1}
+  m_LocalScale: {x: 35, y: 35, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3722640228558486743}
@@ -137,7 +137,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 98.4458
+  m_Mass: 33.49892
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 9.81
@@ -257,44 +257,11 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 3722640229819112781}
-  - {fileID: 6403526172553662045}
   - {fileID: 1097726951135587244}
+  - {fileID: 6841466133589254731}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &6403526172553662045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722640229819112817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
 --- !u!114 &1097726951135587244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,23 +278,39 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 1
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Speed
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isAttacking
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Charging
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: hitted
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: isDead
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 0
+--- !u!114 &6841466133589254731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722640229819112817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
 --- !u!1 &7400123275956050351
 GameObject:
   m_ObjectHideFlags: 0

@@ -1474,6 +1474,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 797496632}
   - {fileID: 1314740640}
+  canvas: {fileID: 831321697}
 --- !u!4 &1173711419
 Transform:
   m_ObjectHideFlags: 0

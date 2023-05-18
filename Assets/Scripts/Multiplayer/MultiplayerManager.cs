@@ -5,6 +5,7 @@ using Firebase.Auth;
 using Firebase.Database;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MultiplayerManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class MultiplayerManager : MonoBehaviour
     private DatabaseReference db;
 
     private PhotonView view;
+
+    public Canvas canvas;
 
     void Awake()
     {
@@ -68,33 +71,29 @@ public class MultiplayerManager : MonoBehaviour
 
     void Start()
     {
-        Vector2 newScale = new Vector2(35f, 35f);
+        int spawnIndex;
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Transform spawnPoint = spawnPoints[0];
-            GameObject prefab =
-                characters[(int)
-                PhotonNetwork.LocalPlayer.CustomProperties["playerCharacter"]];
-
-            prefab.transform.localScale = newScale;
-            PhotonNetwork
-                .Instantiate(prefab.name,
-                spawnPoint.position,
-                Quaternion.identity);
+        if (!PhotonNetwork.IsMasterClient){
+            spawnIndex = 1;
+        } else {
+            spawnIndex = 0;
         }
-        else
-        {
-            Transform spawnPoint = spawnPoints[1];
-            GameObject prefab =
-                characters[(int)
-                PhotonNetwork.LocalPlayer.CustomProperties["playerCharacter"]];
 
-            prefab.transform.localScale = newScale;
-            PhotonNetwork
-                .Instantiate(prefab.name,
-                spawnPoint.position,
-                Quaternion.identity);
+        Transform spawnPoint = spawnPoints[spawnIndex];
+        GameObject prefab =
+            characters[(int)
+            PhotonNetwork.LocalPlayer.CustomProperties["playerCharacter"]];
+
+        if(PhotonNetwork.IsMasterClient){
+            prefab.GetComponent<PlayerStatus>().healthBar = canvas.transform.Find("HealthBar_Player").GetComponent<Image>();
+        } else {
+            prefab.GetComponent<PlayerStatus>().healthBar = canvas.transform.Find("HealthBar_Enemy").GetComponent<Image>();
         }
+
+        prefab.transform.localScale = new Vector2(35f, 35f);
+        PhotonNetwork
+            .Instantiate(prefab.name,
+            spawnPoint.position,
+            Quaternion.identity);
     }
 }
