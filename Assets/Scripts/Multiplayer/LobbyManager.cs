@@ -198,19 +198,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
         }
     }
 
-    /*
-    void saveGame() {
-        // Obtener una referencia a la colección "Partides" para el jugador actual
-        var partidesRef = db.Child("Partides").Child(Usuari.UserId);
-
-        // Guardar el número de victorias en la colección "Partides" para el jugador
-        int victorias = 5; // Ejemplo de número de victorias
-        var victoriasTask = partidesRef.Child("victorias").SetValueAsync(victorias);
-
-        yield return new WaitUntil(predicate: () => victoriasTask.IsCompleted);
-    }
-    */
-
     public override void OnConnectedToMaster() {
         PhotonNetwork.JoinLobby();
     }
@@ -218,11 +205,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks {
     public void goToMain() {
         PhotonNetwork.Disconnect();
     }
-
+    
     public override void OnDisconnected(DisconnectCause cause)
     {
         SceneManager.LoadScene("MainScene"); // Carga la escena del menú principal
     }
-
     
 }
